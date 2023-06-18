@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/13Servlet/LifeCycle.do")
+@WebServlet("/12Servlet/LifeCycle.do")
 public class LifeCycle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,14 +35,14 @@ public class LifeCycle extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
             throws ServletException, IOException {
         System.out.println("doGet() 호출");
-        req.getRequestDispatcher("/13Servlet/LifeCycle.jsp").forward(req, resp);
+        req.getRequestDispatcher("/12Servlet/LifeCycle.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
             throws ServletException, IOException {
         System.out.println("doPost() 호출");
-        req.getRequestDispatcher("/13Servlet/LifeCycle.jsp").forward(req, resp);
+        req.getRequestDispatcher("/12Servlet/LifeCycle.jsp").forward(req, resp);
     }
 
     @Override

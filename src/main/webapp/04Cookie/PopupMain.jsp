@@ -30,21 +30,23 @@ if (cookies != null) {
     }
 </style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script>
 $(function() {
     $('#closeBtn').click(function() {
         $('#popup').hide();
         var chkVal = $("input:checkbox[id=inactiveToday]:checked").val();
-        $.ajax({
-            url : './PopupCookie.jsp',
-            type : 'get',
-            data : {inactiveToday : chkVal},
-            dataType : "text",
-            success : function(resData) {
-                if (resData != '') location.reload();
-            }
-        });
+        if(chkVal==1){
+	        $.ajax({
+	            url : './PopupCookie.jsp',
+	            type : 'get',
+	            data : {inactiveToday : chkVal},
+	            dataType : "text",
+	            success : function(resData) {
+	                if (resData != '') location.reload();
+	            }
+	        });
+        }
     });
 });
 </script>

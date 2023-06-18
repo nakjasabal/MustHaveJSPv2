@@ -28,7 +28,7 @@ public class FrontController extends HttpServlet {
 
         req.setAttribute("uri", uri);
         req.setAttribute("commandStr", commandStr); 
-        req.getRequestDispatcher("/13Servlet/FrontController.jsp").forward(req, resp);
+        req.getRequestDispatcher("/12Servlet/FrontController.jsp").forward(req, resp);
     }
 
     // 페이지별 처리 메서드

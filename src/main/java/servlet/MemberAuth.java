@@ -11,8 +11,7 @@ import membership.MemberDAO;
 import membership.MemberDTO;
 
 public class MemberAuth extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 1L;	
     MemberDAO dao;
 
     @Override
@@ -54,7 +53,7 @@ public class MemberAuth extends HttpServlet {
             else  // 비회원
                 req.setAttribute("authMessage", "귀하는 회원이 아닙니다.");
         }
-        req.getRequestDispatcher("/13Servlet/MemberAuth.jsp").forward(req, resp);
+        req.getRequestDispatcher("/12Servlet/MemberAuth.jsp").forward(req, resp);
     }
 
     @Override

@@ -9,10 +9,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@MultipartConfig(
-	maxFileSize = 1024 * 1024 * 1,
-	maxRequestSize = 1024 * 1024 * 10
-)
 public class WriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

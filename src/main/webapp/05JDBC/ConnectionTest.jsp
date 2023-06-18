@@ -27,6 +27,7 @@
     JDBConnect jdbc3 = new JDBConnect(application); 
     jdbc3.close();
     %>
+   
     <h2>커넥션 풀 테스트</h2>
     <%
     DBConnPool pool = new DBConnPool();

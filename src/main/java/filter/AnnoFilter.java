@@ -15,7 +15,7 @@ public class AnnoFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException { 
-		/* 처리할 내용이 없다면 정의하지 않아도 됩니다. */		
+		/* 처리할 내용이 없다면 오버라이딩하지 않아도 됩니다. */		
 	}
 	
 	@Override

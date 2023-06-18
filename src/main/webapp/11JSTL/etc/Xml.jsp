@@ -5,25 +5,12 @@
 <html>
 <head><title>JSTL - xml</title></head>
 <body>
-    <%-- <c:import url="../inc/BookList.xml" var="booklist" charEncoding="UTF-8"/> --%>
-
-    <c:set var="booklist">
-    <booklist>
-        <book>
-            <name>사피엔스</name>
-            <author>유발 하라리</author>
-            <price>19800</price>
-        </book>
-        <book>
-            <name>총,균,쇠</name>
-            <author>제러드 다이아몬드</author>
-            <price>25200</price>
-        </book>
-    </booklist>
+	<c:set var="booklist">
+    	<c:import url="/11JSTL/inc/BookList.xml" charEncoding="UTF-8" />
     </c:set>
 
     <x:parse xml="${booklist}" var="blist" />
-    
+     
     <h4>파싱 1</h4>
     제목 : <x:out select="$blist/booklist/book[1]/name" /> <br />
     저자 : <x:out select="$blist/booklist/book[1]/author" /> <br />

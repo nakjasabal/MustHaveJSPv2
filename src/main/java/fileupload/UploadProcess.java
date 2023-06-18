@@ -20,12 +20,12 @@ public class UploadProcess extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-	    
-		//현재 사용중인 컴퓨터의 절대경로 지정하기 
-		//String saveDirectory = "C:/02Workspaces/MustHaveJSP2/src/main/webapp/Uploads";
+		//드라이브 명으로 절대경로 지정하기 
+		//String saveDirectory = "C:/02Workspaces/MustHaveJSP/src/main/webapp/Uploads";
 		//Uploads 디렉토리의 물리적 경로 가져오기
 	    String saveDirectory = getServletContext().getRealPath("/Uploads");
 	    
+	    //파일 업로드 하기
 	    String originalFileName = FileUtil.uploadFile(req, saveDirectory);
         
         //저장된 파일명 변경하기
@@ -39,7 +39,6 @@ public class UploadProcess extends HttpServlet {
 	}
 	
 	private void insertMyFile(HttpServletRequest req, String oFileName, String sFileName) {
-		
 		//파일 외 폼값 받기
 	    String title = req.getParameter("title");
 	    String[] cateArray = req.getParameterValues("cate");
@@ -61,7 +60,7 @@ public class UploadProcess extends HttpServlet {
         dto.setOfile(oFileName);
         dto.setSfile(sFileName);
 
-        // 6. DAO를 통해 데이터베이스에 반영
+        //DAO를 통해 데이터베이스에 반영
         MyFileDAO dao = new MyFileDAO();
         dao.insertFile(dto);
         dao.close();

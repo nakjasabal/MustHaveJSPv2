@@ -20,12 +20,14 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/NaverSearchAPI.do")
 public class SearchAPI extends HttpServlet {
-    @Override
+    private static final long serialVersionUID = 1L;
+
+	@Override
     protected void service(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         // 1. 인증 정보 설정
-        String clientId = "6VTiJdjKGycNDkOw8KUY";//"본인의 클라이언트 아이디";
-        String clientSecret = "rEDK8jnsHl";//"본인의 클라이언트 시크릿";
+        String clientId = "본인의 클라이언트 아이디";
+        String clientSecret = "본인의 클라이언트 시크릿";
 
         // 2. 검색 조건 설정
         int startNum = 0;    // 검색 시작 위치

@@ -14,49 +14,54 @@ import jakarta.servlet.http.Part;
 
 public class FileUtil {
 	
+	//파일 업로드
 	public static String uploadFile(HttpServletRequest req, String sDirectory) {
 		String originalFileName = "";
 		try {
 			//Part 객체를 통해 서버로 전송된 파일명 읽어오기 
 			Part part = req.getPart("ofile");
-			originalFileName = FileUtil.getFilename(part);
-			if (!originalFileName.isEmpty()) {
+						
+			//Part 객체의 헤더값 중 content-disposition 읽어오기 
+	        String partHeader = part.getHeader("content-disposition");
+	        //출력결과 => form-data; name="attachedFile"; filename="파일명.jpg"
+	        System.out.println("partHeader="+ partHeader);
+	        
+	        //헤더값에서 파일명 잘라내기
+	        String[] phArr = partHeader.split("filename=");
+	        originalFileName = phArr[1].trim().replace("\"", "");
+			
+			//전송된 파일이 있다면 디렉토리에 저장
+			if (!originalFileName.isEmpty()) {				
 				part.write(sDirectory+ File.separator +originalFileName);
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		//원본 파일명 반환
 		return originalFileName;			
 	}
-	
-	public static String getFilename(Part part) {
-		//Part 객체의 헤더값 중 content-disposition 읽어오기 
-        String partHeader = part.getHeader("content-disposition");
-        //출력결과 : form-data; name="attachedFile"; filename="야옹.jpg"
-        System.out.println("partHeader="+ partHeader);
-        
-        String[] phArr = partHeader.split("filename=");
-        String fName = phArr[1].trim().replace("\"", "");
-        System.out.println("원본 파일명:"+ fName);
-        return fName;
-    }
-	
-	public static String renameFile(String sDirectory, String fName) {
-		String ext = fName.substring(fName.lastIndexOf("."));  // 파일 확장자
+	 
+	//파일명 변경
+	public static String renameFile(String sDirectory, String fileName) {
+		//원본파일의 확장자 잘라내기
+		String ext = fileName.substring(fileName.lastIndexOf("."));
+		//날짜 및 시간을 통해 파일명 생성
 		String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
-		String newFileName = now + ext;  // 새로운 파일 이름("업로드일시.확장자")
+		//"날짜_시간.확장자" 형태의 새로운 파일명 생성
+		String newFileName = now + ext;  
 
-		File oldFile = new File(sDirectory + File.separator + fName);
+		//기존 파일명을 새로운 파일명으로 변경
+		File oldFile = new File(sDirectory + File.separator + fileName);
 	    File newFile = new File(sDirectory + File.separator + newFileName);
 	    oldFile.renameTo(newFile);
-	    System.out.println("변경된 파일명:"+ newFileName);
 	    
+	    //변경된 파일명 반환
 	    return newFileName;
 	}
 	
-    // 명시한 파일을 찾아 다운로드합니다.
-    public static void download(HttpServletRequest req, HttpServletResponse resp,
+	//파일 다운로드
+	public static void download(HttpServletRequest req, HttpServletResponse resp,
             String directory, String sfileName, String ofileName) {
         String sDirectory = req.getServletContext().getRealPath(directory);
         try {
@@ -106,7 +111,7 @@ public class FileUtil {
         }
     }
 
-    // 지정한 위치의 파일을 삭제합니다.
+    //파일 삭제 
     public static void deleteFile(HttpServletRequest req,
             String directory, String filename) {
         String sDirectory = req.getServletContext().getRealPath(directory);

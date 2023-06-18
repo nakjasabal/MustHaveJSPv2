@@ -14,9 +14,9 @@
         <li>요청명 : ${ commandStr }</li>
     </ol>    
     <ul>
-        <li><a href="../13Servlet/regist.one">회원가입</a></li>
-        <li><a href="../13Servlet/login.one">로그인</a></li>
-        <li><a href="../13Servlet/freeboard.one">자유게시판</a></li>
+        <li><a href="../12Servlet/regist.one">회원가입</a></li>
+        <li><a href="../12Servlet/login.one">로그인</a></li>
+        <li><a href="../12Servlet/freeboard.one">자유게시판</a></li>
     </ul>
 </body>
 </html>
