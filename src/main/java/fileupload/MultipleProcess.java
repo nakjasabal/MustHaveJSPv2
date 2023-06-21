@@ -24,7 +24,7 @@ public class MultipleProcess extends HttpServlet {
 		//Uploads 디렉토리의 물리적 경로 가져오기
 	    String saveDirectory = getServletContext().getRealPath("/Uploads");
 	    
-	    //파일 업로드 하기
+	    //다중 파일 업로드 하기
 	    ArrayList<String> listFileName = FileUtil.multipleFile(req, saveDirectory);
         
 	    //파일 갯수만큼 반복
