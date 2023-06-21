@@ -125,7 +125,8 @@ public class FileUtil {
     
     //multiple 속성 추가로 2개 이상의 파일 업로드
     public static ArrayList<String> multipleFile(HttpServletRequest req, String sDirectory) {
-		ArrayList<String> listFileName = new ArrayList<>();
+		//파일명 저장을 위한 컬렉션 생성
+    	ArrayList<String> listFileName = new ArrayList<>();
 		try {
 			//Part 객체를 통해 서버로 전송된 파일명 읽어오기 
 			Collection<Part> parts = req.getParts();
