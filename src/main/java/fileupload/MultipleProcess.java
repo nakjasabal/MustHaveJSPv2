@@ -21,23 +21,29 @@ public class MultipleProcess extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		//Uploads 디렉토리의 물리적 경로 가져오기
-	    String saveDirectory = getServletContext().getRealPath("/Uploads");
-	    
-	    //다중 파일 업로드 하기
-	    ArrayList<String> listFileName = FileUtil.multipleFile(req, saveDirectory);
-        
-	    //파일 갯수만큼 반복
-	    for(String originalFileName : listFileName) {
-	        //저장된 파일명 변경하기
-	        String savedFileName = FileUtil.renameFile(saveDirectory, originalFileName);
+		try {
+			//Uploads 디렉토리의 물리적 경로 가져오기
+		    String saveDirectory = getServletContext().getRealPath("/Uploads");
+		    
+		    //다중 파일 업로드 하기
+		    ArrayList<String> listFileName = FileUtil.multipleFile(req, saveDirectory);
 	        
-	        //DB에 저장하기
-	        insertMyFile(req, originalFileName, savedFileName);
-	    }
-        
-        //파일 목록 페이지로 이동하기
-        resp.sendRedirect("FileList.jsp");
+		    //파일 갯수만큼 반복
+		    for(String originalFileName : listFileName) {
+		        //저장된 파일명 변경하기
+		        String savedFileName = FileUtil.renameFile(saveDirectory, originalFileName);
+		        
+		        //DB에 저장하기
+		        insertMyFile(req, originalFileName, savedFileName);
+		    }
+	        
+	        //파일 목록 페이지로 이동하기
+	        resp.sendRedirect("FileList.jsp");
+		}
+		catch (Exception e) {
+			req.setAttribute("errorMessage", "파일 업로드 오류");
+			req.getRequestDispatcher("MultiUploadMain.jsp").forward(req, resp);
+		}
 	}
 	
 	private void insertMyFile(HttpServletRequest req, String oFileName, String sFileName) {

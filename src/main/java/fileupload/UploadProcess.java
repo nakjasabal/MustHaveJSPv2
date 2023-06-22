@@ -40,7 +40,7 @@ public class UploadProcess extends HttpServlet {
 		}
 		catch (Exception e) {
 			req.setAttribute("errorMessage", "파일 업로드 오류");
-			req.getRequestDispatcher("MultiUploadMain.jsp").forward(req, resp);
+			req.getRequestDispatcher("FileUploadMain.jsp").forward(req, resp);
 		}
 	}
 	
