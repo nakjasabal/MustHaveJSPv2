@@ -28,6 +28,8 @@ public class MultipleProcess extends HttpServlet {
 		    //다중 파일 업로드 하기
 		    ArrayList<String> listFileName = FileUtil.multipleFile(req, saveDirectory);
 	        
+		    
+		    System.out.println("실행 ????????????");
 		    //파일 갯수만큼 반복
 		    for(String originalFileName : listFileName) {
 		        //저장된 파일명 변경하기
