@@ -20,22 +20,28 @@ public class UploadProcess extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		//드라이브 명으로 절대경로 지정하기 
-		//String saveDirectory = "C:/02Workspaces/MustHaveJSP/src/main/webapp/Uploads";
-		//Uploads 디렉토리의 물리적 경로 가져오기
-	    String saveDirectory = getServletContext().getRealPath("/Uploads");
-	    
-	    //파일 업로드 하기
-	    String originalFileName = FileUtil.uploadFile(req, saveDirectory);
-        
-        //저장된 파일명 변경하기
-        String savedFileName = FileUtil.renameFile(saveDirectory, originalFileName);
-        
-        //DB에 저장하기
-        insertMyFile(req, originalFileName, savedFileName);
-        
-        //파일 목록 페이지로 이동하기
-        resp.sendRedirect("FileList.jsp");
+		try {
+			//드라이브 명으로 절대경로 지정하기 
+			//String saveDirectory = "C:/02Workspaces/MustHaveJSP/src/main/webapp/Uploads";
+			//Uploads 디렉토리의 물리적 경로 가져오기
+		    String saveDirectory = getServletContext().getRealPath("/Uploads");
+		    
+		    //파일 업로드 하기
+		    String originalFileName = FileUtil.uploadFile(req, saveDirectory);
+	        
+	        //저장된 파일명 변경하기
+	        String savedFileName = FileUtil.renameFile(saveDirectory, originalFileName);
+	        
+	        //DB에 저장하기
+	        insertMyFile(req, originalFileName, savedFileName);
+	        
+	        //파일 목록 페이지로 이동하기
+	        resp.sendRedirect("FileList.jsp");
+		}
+		catch (Exception e) {
+			req.setAttribute("errorMessage", "파일 업로드 오류");
+			req.getRequestDispatcher("MultiUploadMain.jsp").forward(req, resp);
+		}
 	}
 	
 	private void insertMyFile(HttpServletRequest req, String oFileName, String sFileName) {
