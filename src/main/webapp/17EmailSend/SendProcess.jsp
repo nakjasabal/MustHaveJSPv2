@@ -50,7 +50,7 @@ else if (format.equals("html")) {
 
 try {
     NaverSMTP smtpServer = new NaverSMTP();  // 메일 전송 클래스 생성
-    smtpServer.emailSending(mailInfo);// 전송
+    smtpServer.emailSending(emailInfo);// 전송
     out.print("이메일 전송 성공");
 }
 catch (Exception e) {
