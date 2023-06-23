@@ -27,9 +27,7 @@ public class MultipleProcess extends HttpServlet {
 		    
 		    //다중 파일 업로드 하기
 		    ArrayList<String> listFileName = FileUtil.multipleFile(req, saveDirectory);
-	        
-		    
-		    System.out.println("실행 ????????????");
+	         
 		    //파일 갯수만큼 반복
 		    for(String originalFileName : listFileName) {
 		        //저장된 파일명 변경하기
@@ -38,11 +36,12 @@ public class MultipleProcess extends HttpServlet {
 		        //DB에 저장하기
 		        insertMyFile(req, originalFileName, savedFileName);
 		    }
-	        
+		    
 	        //파일 목록 페이지로 이동하기
 	        resp.sendRedirect("FileList.jsp");
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 			req.setAttribute("errorMessage", "파일 업로드 오류");
 			req.getRequestDispatcher("MultiUploadMain.jsp").forward(req, resp);
 		}

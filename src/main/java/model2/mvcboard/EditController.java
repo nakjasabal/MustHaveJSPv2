@@ -38,7 +38,15 @@ public class EditController extends HttpServlet {
         String saveDirectory = req.getServletContext().getRealPath("/Uploads");
       
         // 파일 업로드
-        String originalFileName = FileUtil.uploadFile(req, saveDirectory);
+        String originalFileName = "";
+        try {
+        	originalFileName = FileUtil.uploadFile(req, saveDirectory);
+        }
+        catch (Exception e) {
+        	JSFunction.alertLocation(resp, "파일 업로드 오류입니다.",
+                    "../mvcboard/write.do");
+        	return;
+		}
 
         // 2. 파일 업로드 외 처리 =============================
         // 수정 내용을 매개변수에서 얻어옴

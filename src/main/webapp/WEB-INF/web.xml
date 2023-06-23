@@ -78,7 +78,7 @@
     <param-value>5</param-value>
   </context-param>
   
-  <!-- 서블릿 매핑 1(예제 13-2) -->
+  <!-- 서블릿 매핑 1(예제 12-2) -->
   <servlet>
     <servlet-name>HelloServlet</servlet-name>
     <servlet-class>servlet.HelloServlet</servlet-class>
@@ -88,7 +88,7 @@
     <url-pattern>/12Servlet/HelloServlet.do</url-pattern>
   </servlet-mapping>
   
-  <!-- 서블릿 매핑 2(예제 13-7) -->
+  <!-- 서블릿 매핑 2(예제 12-7) -->
   <servlet>
     <servlet-name>DirectServletPrint</servlet-name>
     <servlet-class>servlet.DirectServletPrint</servlet-class>
@@ -98,7 +98,7 @@
     <url-pattern>/12Servlet/DirectServletPrint.do</url-pattern>
   </servlet-mapping>
   
-  <!-- 서블릿 매핑 3(예제 13-14) -->
+  <!-- 서블릿 매핑 3(예제 12-14) -->
   <servlet>
     <servlet-name>MemberAuth</servlet-name>
     <servlet-class>servlet.MemberAuth</servlet-class>

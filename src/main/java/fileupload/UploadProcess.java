@@ -39,6 +39,7 @@ public class UploadProcess extends HttpServlet {
 	        resp.sendRedirect("FileList.jsp");
 		}
 		catch (Exception e) {
+			e.printStackTrace();
 			req.setAttribute("errorMessage", "파일 업로드 오류");
 			req.getRequestDispatcher("FileUploadMain.jsp").forward(req, resp);
 		}
