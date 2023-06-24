@@ -1,13 +1,3 @@
-/api/
-/common/
-/el/
-/fileupload/
-/filter/
 /listener/
-/membership/
-/model1/
-/model2/
-/servlet/
+/filter/
 /smtp/
-/utils/
-/websocket/
