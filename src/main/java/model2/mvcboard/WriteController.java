@@ -21,7 +21,7 @@ public class WriteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        // 파일 업로드 처리 =============================
+        // 1. 파일 업로드 처리 =============================
         // 업로드 디렉터리의 물리적 경로 확인
         String saveDirectory = req.getServletContext().getRealPath("/Uploads");
                 
@@ -36,7 +36,7 @@ public class WriteController extends HttpServlet {
         	return;
 		}
 
-        // 파일 업로드 외 처리 =============================
+        // 2. 파일 업로드 외 처리 =============================
         // 폼값을 DTO에 저장
         MVCBoardDTO dto = new MVCBoardDTO(); 
         dto.setName(req.getParameter("name"));

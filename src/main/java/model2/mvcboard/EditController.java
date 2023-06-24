@@ -43,8 +43,7 @@ public class EditController extends HttpServlet {
         	originalFileName = FileUtil.uploadFile(req, saveDirectory);
         }
         catch (Exception e) {
-        	JSFunction.alertLocation(resp, "파일 업로드 오류입니다.",
-                    "../mvcboard/write.do");
+        	JSFunction.alertBack(resp, "파일 업로드 오류입니다.");
         	return;
 		}
 
