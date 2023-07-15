@@ -37,8 +37,8 @@ public class MyFileDAO extends DBConnPool {
         // 쿼리문 작성
         String query = "SELECT * FROM myfile ORDER BY idx DESC";
         try {
-            psmt = con.prepareStatement(query);  // 쿼리 준비
-            rs = psmt.executeQuery();  // 쿼리 실행
+            stmt = con.createStatement();  // statement 객체 생성
+            rs = stmt.executeQuery(query);  // 쿼리 실행
 
             while (rs.next()) {  // 목록 안의 파일 수만큼 반복
                 // DTO에 저장
