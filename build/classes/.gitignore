@@ -1,13 +1,13 @@
-/listener/
-/filter/
-/smtp/
 /api/
 /common/
 /el/
 /fileupload/
+/filter/
+/listener/
 /membership/
 /model1/
 /model2/
 /servlet/
+/smtp/
 /utils/
 /websocket/
