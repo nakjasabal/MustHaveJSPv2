@@ -9,7 +9,7 @@
             form.title.focus();
             return false;
         }
-        if (form.attachedFile.value == "") {
+        if (form.ofile.value == "") {
             alert("첨부파일은 필수 입력입니다.");
             return false;
         }
