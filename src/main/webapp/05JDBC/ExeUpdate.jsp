@@ -18,13 +18,14 @@
 
     // 쿼리문 생성
     String sql = "INSERT INTO member VALUES (?, ?, ?, sysdate)";  
-    PreparedStatement psmt = jdbc.con.prepareStatement(sql);  
-    psmt.setString(1, id);
-    psmt.setString(2, pass);
-    psmt.setString(3, name);
+    //PreparedStatement psmt = jdbc.con.prepareStatement(sql);  
+    jdbc.psmt = jdbc.con.prepareStatement(sql);
+    jdbc.psmt.setString(1, id);
+    jdbc.psmt.setString(2, pass);
+    jdbc.psmt.setString(3, name);
 
     // 쿼리 수행
-    int inResult = psmt.executeUpdate(); 
+    int inResult = jdbc.psmt.executeUpdate(); 
     out.println(inResult + "행이 입력되었습니다.");
 
     // 연결 닫기

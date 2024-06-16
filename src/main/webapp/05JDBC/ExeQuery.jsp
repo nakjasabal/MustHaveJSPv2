@@ -14,17 +14,19 @@
 
     // 쿼리문 생성   
     String sql = "SELECT id, pass, name, regidate FROM member";  
-    Statement stmt = jdbc.con.createStatement();  
-
+    //Statement stmt = jdbc.con.createStatement();  
+    jdbc.stmt = jdbc.con.createStatement();
+    
     // 쿼리 수행
-    ResultSet rs = stmt.executeQuery(sql);  
+    //ResultSet rs = jdbc.stmt.executeQuery(sql);  
+    jdbc.rs = jdbc.stmt.executeQuery(sql);
 
     // 결과 확인(웹 페이지에 출력)
-    while (rs.next()) { 
-        String id = rs.getString(1);
-        String pw = rs.getString(2);
-        String name = rs.getString("name");
-        java.sql.Date regidate = rs.getDate("regidate");
+    while (jdbc.rs.next()) { 
+        String id = jdbc.rs.getString(1);
+        String pw = jdbc.rs.getString(2);
+        String name = jdbc.rs.getString("name");
+        java.sql.Date regidate = jdbc.rs.getDate("regidate");
         
         out.println(String.format("%s %s %s %s", id, pw, name, regidate) + "<br/>"); 
     }
