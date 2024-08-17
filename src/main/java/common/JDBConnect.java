@@ -73,7 +73,6 @@ public class JDBConnect {
     public void close() { 
         try {            
             if (rs != null) rs.close(); 
-            System.out.println("rs="+ rs);
             if (stmt != null) stmt.close();
             if (psmt != null) psmt.close();
             if (con != null) con.close(); 

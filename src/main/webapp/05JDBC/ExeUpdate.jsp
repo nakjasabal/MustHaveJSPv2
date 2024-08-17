@@ -18,7 +18,6 @@
 
     // 쿼리문 생성
     String sql = "INSERT INTO member VALUES (?, ?, ?, sysdate)";  
-    //PreparedStatement psmt = jdbc.con.prepareStatement(sql);  
     jdbc.psmt = jdbc.con.prepareStatement(sql);
     jdbc.psmt.setString(1, id);
     jdbc.psmt.setString(2, pass);

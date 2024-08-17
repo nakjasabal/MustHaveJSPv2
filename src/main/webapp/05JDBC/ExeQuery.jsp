@@ -14,11 +14,9 @@
 
     // 쿼리문 생성   
     String sql = "SELECT id, pass, name, regidate FROM member";  
-    //Statement stmt = jdbc.con.createStatement();  
     jdbc.stmt = jdbc.con.createStatement();
     
     // 쿼리 수행
-    //ResultSet rs = jdbc.stmt.executeQuery(sql);  
     jdbc.rs = jdbc.stmt.executeQuery(sql);
 
     // 결과 확인(웹 페이지에 출력)
